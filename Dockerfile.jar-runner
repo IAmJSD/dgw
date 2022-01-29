@@ -1,0 +1,4 @@
+FROM openjdk:17
+WORKDIR /dst/app
+COPY dgw.jar dgw.jar
+ENTRYPOINT java -jar dgw.jar
