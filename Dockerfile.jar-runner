@@ -1,4 +1,14 @@
 FROM openjdk:17
+RUN jlink --compress=2 --add-modules java.base,java.desktop,java.logging,java.management,java.naming,java.sql,java.xml,jdk.crypto.ec --output /dst/jre
+
+FROM ubuntu:20.04
+RUN set -e; \
+  export DEBIAN_FRONTEND=noninteractive; \
+  apt-get update; \
+  apt-get install -y --no-install-recommends ca-certificates
+COPY --from=0 /dst/jre /dst/jre
 WORKDIR /dst/app
+RUN /usr/sbin/update-ca-certificates
+RUN /dst/jre/bin/java --version
 COPY dgw.jar dgw.jar
-ENTRYPOINT java -jar dgw.jar
+CMD ["/dst/jre/bin/java", "-jar", "dgw.jar"]
