@@ -6,17 +6,20 @@ plugins {
 group 'me.jakegealer'
 version '1.0'
 
+ext.jdaVersion = "eec64a7675a670d1d57ee5ca33f991663ec9601b"
+
 repositories {
     maven {
         name 'm2-dv8tion'
         url 'https://m2.dv8tion.net/releases'
     }
+    maven { url 'https://jitpack.io' }
     mavenCentral()
 }
 
 dependencies {
     implementation 'io.nats:jnats:2.13.1'
-    implementation 'net.dv8tion:JDA:5.0.0-alpha.4'
+    implementation "com.github.dv8fromtheworld:JDA:$jdaVersion"
     implementation 'ch.qos.logback:logback-classic:1.2.10'
 }
 
