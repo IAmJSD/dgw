@@ -1,8 +1,5 @@
 # dgw
-A pretty fast and stable gateway dispatcher written in Java. It dispatches to NATS. It is written in Java for the following reasons:
-
-- **Stable library:** Java has a very stable Discord library (JDA) and a very stable Nats wrapper. There shouldn't be any stability issues with this library.
-- **Very portable:** Building for multiple architectures is very fast with Java.
+A pretty fast and stable gateway dispatcher written in Java. It dispatches to NATS. This was re-written in Rust and is distributed for multiple platforms.
 
 It's worth noting all NATS events will be dispatched to `discord.*`. By default, if you have the guild members intent, it will send chunk payloads.
 
